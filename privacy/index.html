@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Vinyl Diagnostics</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      max-width: 42rem;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem 3rem;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { color: #f0f0f0; background: #121212; }
+      a { color: #8ab4f8; }
+      code { background: #2a2a2a; }
+    }
+    h1 { font-size: 1.65rem; font-weight: 650; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 650; margin-top: 1.75rem; }
+    p, li { margin: 0.55rem 0; }
+    ul { padding-left: 1.25rem; }
+    .meta { color: #555; font-size: 0.95rem; }
+    @media (prefers-color-scheme: dark) { .meta { color: #aaa; } }
+    a { color: #1a73e8; }
+    code { font-size: 0.9em; padding: 0.1em 0.3em; border-radius: 3px; background: #eee; }
+    nav { margin-bottom: 1.5rem; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <nav><a href="../">Vinyl Diagnostics</a> · Privacy policy</nav>
+
+  <h1>Privacy Policy for Vinyl Diagnostics</h1>
+  <p class="meta"><strong>Effective date:</strong> 5 October 2026</p>
+  <p class="meta">
+    <strong>App:</strong> Vinyl Diagnostics (Flutter project <code>vinyl_diagnostics</code>)<br>
+    <strong>Developer:</strong> Mikko Pulli (GitHub: <a href="https://github.com/otsatukka">otsatukka</a>)<br>
+    <strong>Contact:</strong> CONTACT_EMAIL
+  </p>
+
+  <p>This policy describes how Vinyl Diagnostics handles information. It is based on an audit of the app’s source code as of the effective date.</p>
+
+  <h2>Summary</h2>
+  <p>Vinyl Diagnostics analyses vinyl / turntable test signals on your device. Audio is used only for on-device measurement. The developer does not collect, transmit, or share your measurement data, recordings, or personal information. There are no accounts, ads, or analytics in the app.</p>
+
+  <h2>What the app does with audio</h2>
+  <ul>
+    <li>The app requests microphone / recording permission (<code>RECORD_AUDIO</code>) so it can capture audio from the input you select (for example a USB interface, line-in / headset jack, or the built-in mic).</li>
+    <li>Capture uses an in-memory PCM stream. Analysis (speed, wow &amp; flutter, rumble, balance, and related measurements) runs entirely on your device.</li>
+    <li>In normal shipping builds, raw audio is <strong>not</strong> saved to disk. Optional WAV/JSON debug dumps exist only when the binary is specially built with a developer compile-time flag (<code>CAPTURE_DEBUG_DUMP</code>); that flag is off for the Play Store build.</li>
+    <li>Demo mode can use synthetic signals instead of live audio; no hardware or microphone is required for demo mode.</li>
+  </ul>
+
+  <h2>What is stored on your device</h2>
+  <p>Stored only locally (not sent to the developer):</p>
+  <ul>
+    <li><strong>Measurement results</strong> — named turntable / “test item” entries and analysis metrics in app support storage (<code>test_items.json</code>). This stores results (numbers and related analysis metadata), not raw recordings.</li>
+    <li><strong>Settings</strong> — SharedPreferences flags such as demo mode and coloured quality-scale bands. Theme preference is in-memory for the session (not persisted).</li>
+    <li><strong>Purchase unlock state</strong> — on Android, Google Play Billing reports whether you own the one-time “full unlock” product. The app keeps that entitlement in memory for the session and re-checks with Play as needed; it does not upload purchase data to a developer server.</li>
+  </ul>
+  <p>You can delete local app data by clearing the app’s storage in Android settings, or by uninstalling the app.</p>
+
+  <h2>What we do not do</h2>
+  <p>Based on the audited code and dependencies:</p>
+  <ul>
+    <li>No developer-operated servers or APIs for this app.</li>
+    <li>No analytics, crash-reporting, advertising, or tracking SDKs.</li>
+    <li>No in-app accounts or sign-in with the developer.</li>
+    <li>No ads.</li>
+    <li>No export/share features that send your data off the device.</li>
+    <li><code>INTERNET</code> appears only in debug/profile Android manifests (Flutter tooling). The release main manifest does not declare <code>INTERNET</code>. The app’s Dart code does not make HTTP/network calls to developer endpoints.</li>
+  </ul>
+
+  <h2>Purchases (Android)</h2>
+  <p>On Android store builds, a one-time full unlock may be offered through <strong>Google Play Billing</strong> (<code>com.android.vending.BILLING</code> / <code>in_app_purchase</code>). Payment details are handled by Google Play under <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a>. The developer does not receive your card or bank details.</p>
+  <p>Desktop builds (for example the Windows tester) use a non-billing stub and do not process Play purchases.</p>
+
+  <h2>Children’s privacy</h2>
+  <p>Vinyl Diagnostics is aimed at adults and enthusiasts setting up and measuring turntables. It is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the effective date at the top will be updated and the published copy on this site will be revised.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <strong>CONTACT_EMAIL</strong><br>
+  Developer profile: <a href="https://github.com/otsatukka">https://github.com/otsatukka</a></p>
+  <p class="meta"><em>Replace CONTACT_EMAIL with a real address before Play Console submission if required.</em></p>
+</body>
+</html>
